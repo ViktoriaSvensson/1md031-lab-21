@@ -21,16 +21,46 @@
      </main>
 
  <nav> Menu items
-
-   <h4>
+<div style="float:left;">
+  <h4>
      burgare 1:
 <br> <!--en rad ner-->
 <img src="https://res.cloudinary.com/hemkop/image/upload/c_fill,g_auto:custom_no_override,h_347,q_auto,w_618/v1/recipeImages/9854146805790" alt="Span" title="Another in-line element" style="width: 200px;"" >
+<br>
 <ul>
     <li>1</li>
     <li>2</li>
     <li>3</li>
 </ul>
+</div>
+
+<div style="clear:right;"">
+  <h4>
+     burgare 2:
+<br> <!--en rad ner-->
+<img src="https://res.cloudinary.com/hemkop/image/upload/c_fill,g_auto:custom_no_override,h_347,q_auto,w_618/v1/recipeImages/9854146805790" alt="Span" title="Another in-line element" style="width: 200px;"" >
+<br>
+<ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+</ul>
+</div>
+
+<div style="float:right;"">
+  <h4>
+     burgare 3:
+<br> <!--en rad ner-->
+<img src="https://res.cloudinary.com/hemkop/image/upload/c_fill,g_auto:custom_no_override,h_347,q_auto,w_618/v1/recipeImages/9854146805790" alt="Span" title="Another in-line element" style="width: 200px;"" >
+<br>
+<ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+</ul>
+</div>
+<br>
+<br>
    <hr> <!--gör en horisontell linje-->
 
  </section>
@@ -38,7 +68,76 @@
 
 
    <section>
+     <h3>
       Customesrs information
+     </h3>
+     This is where you provide neccessary information
+
+     <h4>
+      Delivery informaiton:
+     </h4>
+
+<h4>Gender</h4>
+     <p><label for="Female">
+         Female
+         </label>
+         <input checked="checked" type="radio" id="Gender" name="fn">
+     </p>
+     <p>
+         <label for="Male">
+         Male
+         </label>
+         <input type="radio" id="Gender" name="fn">
+     </p>
+     <p>
+         <label for="Male">
+         Do not wish to provide
+         </label>
+         <input type="radio" id="Gender" name="fn">
+     </p>
+
+<p><label for="firstlastname" >
+    Full name
+    </label>
+    <br>
+    <input type="text" id="firstlastname" name="fn" required="required" placeholder="First- and Last name">
+</p>
+
+<p><label for="email">
+  E-mail
+  </label>
+  <br>
+  <input type="email" id="email" name="em" required="required" placeholder="E-mail address">
+</p>
+
+<p>
+    <label for="street">
+    Street
+    </label>
+    <br>
+    <input type="text" id="street" name="fn" required="required" placeholder="Street name">
+<p>
+
+  <p>
+      <label for="house">
+      House
+      </label>
+      <br>
+      <input type="number" id="street" name="fn" required="required" placeholder="House number">
+  <p>
+
+
+
+
+    <p>
+   <label for="recipient">Recipient</label><be>
+   <select id="recipient" name="rcp">
+       <option selected="selected">DebitCard</option>
+       <option>CreditCard</option>
+       <option>Swish</option>
+   </select>
+</p>
+
    </section>
 
 
