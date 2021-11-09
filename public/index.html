@@ -1,148 +1,123 @@
 <!DOCTYPE HTML>
 <html lang="en">
-   <head>
-       <title>Page title shown in window title</title>
-       <meta charset="utf-8"/>
-    </head>
+<head>
+  <title>Page title shown in window title</title>
+  <meta charset="utf-8"/>
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
 
 
-   <body>
-     <header>
-       <h1>Välkommen till BurgerOnline</h1>
-     </header>
-        <nav> Menu items </nav>
-<section>
+<body>
+  <header class= "rubrik">
+    <img src="https://cdn.pixabay.com/photo/2018/04/28/08/26/menu-3356826_960_720.jpg" id="rubrikbild">
+    <h1 id= "rubriktext"> Välkommen till BurgerOnline </h1>
+  </header>
+
   <main>
-     <h2> <!--skapar större rubriktext-->
-       choose your burger
-     </h2>
+    <section class ="burgermenu">
+      <h2>Choose your burger</h2>
+    This is where you execute your burgers
+    <br><br>
+      <!--<nav> Menu items </nav>-->
 
-     this is where you execute your burgers
-     </main>
+<div class="wrapper">
+      <div class= "box a">
+        <h4>Chicken</h4> <!--en rad ner-->
+        <img src="https://res.cloudinary.com/hemkop/image/upload/c_fill,g_auto:custom_no_override,h_347,q_auto,w_618/v1/recipeImages/9854146805790" alt="Span" title="Another in-line element" style="width: 200px; height: 120px;" style="float:left;"" >
+        <br><ul>
+          <li>2000kcal</li>
+          <li>Chicken</li>
+          <li> Contains <span id= "allergier">lactose  </span></li>
+          <li>Contains <span id= "allergier">gluten </span></li>
+        </ul>
+      </div>
 
- <nav> Menu items
-<div style="float:left;">
-  <h4>
-     burgare 1:
-<br> <!--en rad ner-->
-<img src="https://res.cloudinary.com/hemkop/image/upload/c_fill,g_auto:custom_no_override,h_347,q_auto,w_618/v1/recipeImages/9854146805790" alt="Span" title="Another in-line element" style="width: 200px;"" >
-<br>
-<ul>
-    <li>1</li>
-    <li>2</li>
-    <li>3</li>
-</ul>
-</div>
+      <div class= "box b">
+        <h4>Vegetarian dream</h4>
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRT4Ow2wkRDTW6mb6LDwaVPJX4SmveSV9Q03g&usqp=CAU" style="width: 200px; height: 120px;" style="float:left;"" >
+        <br>
+        <ul>
+          <li>1500kcal</li>
+          <li>Vegetarian</li>
+          <li> Free from <span id= "allergier">Lactose </span></li>
+          <li>Free from <span id= "allergier">Gluten </span></li>
+        </ul>
+      </div>
 
-<div style="clear:right;"">
-  <h4>
-     burgare 2:
-<br> <!--en rad ner-->
-<img src="https://res.cloudinary.com/hemkop/image/upload/c_fill,g_auto:custom_no_override,h_347,q_auto,w_618/v1/recipeImages/9854146805790" alt="Span" title="Another in-line element" style="width: 200px;"" >
-<br>
-<ul>
-    <li>1</li>
-    <li>2</li>
-    <li>3</li>
-</ul>
-</div>
-
-<div style="float:right;"">
-  <h4>
-     burgare 3:
-<br> <!--en rad ner-->
-<img src="https://res.cloudinary.com/hemkop/image/upload/c_fill,g_auto:custom_no_override,h_347,q_auto,w_618/v1/recipeImages/9854146805790" alt="Span" title="Another in-line element" style="width: 200px;"" >
-<br>
-<ul>
-    <li>1</li>
-    <li>2</li>
-    <li>3</li>
-</ul>
-</div>
-<br>
-<br>
-   <hr> <!--gör en horisontell linje-->
-
- </section>
+      <div class= "box c">
+        <h4>Bacon and beef</h4> <!--en rad ner-->
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9vAYgYztYeZZKgeQqe-of_i7Tc03H0eOELg&usqp=CAU" alt="Span" title="Another in-line element" style="width: 200px; height: 120px;"style="float:left;"" >
+        <br>
+        <ul>
+          <li>2000kcal</li>
+          <li>beef</li>
+          <li>Contains <span id= "allergier">lactose  </span></li>
+          <li>Contains  <span id= "allergier">gluten </span></li>
+        </ul>
+      </div><br><br>
+ </div>
+    </section>
 
 
 
-   <section>
-     <h3>
-      Customesrs information
-     </h3>
-     This is where you provide neccessary information
 
-     <h4>
-      Delivery informaiton:
-     </h4>
+    <section class= "personalinfo" style= "clear:left;"">
+      <hr> <!--gör en horisontell linje-->
+      <h2>Customesrs information</h2>
+      This is where you provide neccessary information
+      <h4>Delivery informaiton:</h4>
 
-<h4>Gender</h4>
-     <p><label for="Female">
-         Female
-         </label>
-         <input checked="checked" type="radio" id="Gender" name="fn">
-     </p>
-     <p>
-         <label for="Male">
-         Male
-         </label>
-         <input type="radio" id="Gender" name="fn">
-     </p>
-     <p>
-         <label for="Male">
-         Do not wish to provide
-         </label>
-         <input type="radio" id="Gender" name="fn">
-     </p>
-
-<p><label for="firstlastname" >
-    Full name
-    </label>
-    <br>
-    <input type="text" id="firstlastname" name="fn" required="required" placeholder="First- and Last name">
-</p>
-
-<p><label for="email">
-  E-mail
-  </label>
-  <br>
-  <input type="email" id="email" name="em" required="required" placeholder="E-mail address">
-</p>
-
-<p>
-    <label for="street">
-    Street
-    </label>
-    <br>
-    <input type="text" id="street" name="fn" required="required" placeholder="Street name">
-<p>
-
-  <p>
-      <label for="house">
-      House
+      <p><label for="firstlastname" >
+        Full name
       </label>
       <br>
-      <input type="number" id="street" name="fn" required="required" placeholder="House number">
-  <p>
+      <input type="text" id="firstlastname" name="fn" required="required" placeholder="First- and Last name">
+    </p>
+
+    <p><label for="email">
+      E-mail
+    </label>
+    <br>
+    <input type="email" id="email" name="em" required="required" placeholder="E-mail address">
+  </p>
+
+  <p><label for="street">Street</label><br>
+    <input type="text" id="street" name="fn" required="required" placeholder="Street name"><p>
+
+      <p><label for="house">House</label><br>
+        <input type="number" id="street" name="fn" required="required" placeholder="House number"><p>
+
+          <p><label for="recipient"> Payment options</label><be><br>
+            <select id="recipient" name="rcp">
+              <option selected="selected">DebitCard</option>
+              <option>CreditCard</option>
+              <option>Swish</option>
+            </select></p>
 
 
+            <p>Gender<br>
+              <input checked="checked" type="radio" id="Gender" name="fn">
+              <label for="Gender">Female</label><br>
+
+              <input type="radio" id="Gender" name="fn">
+              <label for="Gender">Male </label><br>
+
+              <input type="radio" id="Gender" name="fn">
+              <label for="Gender">Do not wish to provide </label></p>
 
 
-    <p>
-   <label for="recipient">Recipient</label><be>
-   <select id="recipient" name="rcp">
-       <option selected="selected">DebitCard</option>
-       <option>CreditCard</option>
-       <option>Swish</option>
-   </select>
-</p>
+            </section>
 
-   </section>
+            <button type="submit">
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbRUPEUTPTXcTAOKr5GN3B-pI9DHw9bh3mrw&usqp=CAU" style="width: 15px;"">
+              Place my order!
+            </button>
+          </main>
+          <hr> <!--gör en horisontell linje-->
 
 
-<footer>
-   End notes
-</footer
-   </body>
-</html>
+          <footer>
+            End notes
+            </footer
+          </body>
+          </html>
