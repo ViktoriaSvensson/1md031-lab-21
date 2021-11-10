@@ -19,7 +19,7 @@ background-color: white;
 width: 1145px;
 
 margin: 10px;
-border: 10px outset #ff9900;
+border: 5px outset #DEB887;
 padding: 10px;
 overflow: hidden;
 }
@@ -50,8 +50,8 @@ margin-top: -200px;
  }
 
  .box {
-     background-color: #444;
-     color: #fff;
+     background-color: #black;
+     color: white;
      border-radius: 5px;
      padding: 20px;
      font-size: 150%;
@@ -74,7 +74,7 @@ margin-top: -200px;
   /*margin: 500px;*/
   /*margin: 100px 500px 50px 500px;*/
   margin: 10px;
-  border: 10px outset #ff9900;
+  border: 5px outset #DEB887;
   padding: 10px;
 
 }
@@ -83,12 +83,12 @@ margin-top: -200px;
   /*margin: 300px;*/
   /*margin: 50px 300px 100px 300px;*/
   margin: 10px;
-  border: 10px outset #ff9900;
+  border: 5px outset  #DEB887;
   padding: 10px;
 }
 
 button:hover {
- background-color: #ff5500;
+ background-color: #DEB887;
 }
 
 
