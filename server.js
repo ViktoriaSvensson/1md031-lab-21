@@ -40,9 +40,9 @@ else {
 
 const io = require('socket.io')(http, {cookie: false});
 
-// Store data in an object to keep the global namespace clean and 
+// Store data in an object to keep the global namespace clean and
 // prepare for multiple instances of data if necessary
-function Data() {
+function Data() { //v skapar klass
   this.orders = {};
 }
 
@@ -51,7 +51,7 @@ function Data() {
 */
 Data.prototype.addOrder = function (order) {
   //Store the order in an "associative array" with orderId as key
-  this.orders[order.orderId] = order;
+  this.orders[order.orderId] = order; //not an array, since in {} så its an obj
 };
 
 Data.prototype.getAllOrders = function () {
