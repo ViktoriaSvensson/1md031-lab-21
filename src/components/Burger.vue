@@ -2,16 +2,29 @@
 
 <template>
 
- <div class= "theburgers">
-   <h4>{{ burger.name }}</h4>
-   <img v-bind:src= "burger.url"  alt="Span" title="Another in-line element" style="width: 200px; height: 120px;" >
-   <br><ul>
-     <li>{{ burger.kCal }}</li>
-     <li>{{ burger.contain }}</li>
-     <li> Contains <span id= "allergier" > {{ burger.lactose }}  </span></li>
-     <li>Contains <span id= "allergier">{{ burger.gluten }}</span></li>
-   </ul>
- </div>
+  <div class= "theburgers">
+    <h4>{{ burger.name }}</h4>
+    <img v-bind:src= "burger.url"  alt="Span" title="Another in-line element" style="width: 200px; height: 120px;" >
+    <br><ul>
+      <li>{{ burger.kCal }}</li>
+      <li>{{ burger.contain }}</li>
+      <li> Contains <span id= "allergier" > {{ burger.lactose }}  </span></li>
+      <li>Contains <span id= "allergier">{{ burger.gluten }}</span></li>
+      <li>Amount ordered {{ amountOrdered }}</li>
+    </ul>
+    <button v-on:click="increaseOrder" type="+1" id="ammountButton">
+      +
+    </button>
+    <button v-on:click="decreaseOrder" type="-1" id="ammountButton">
+      -
+    </button>
+  </div>
+
+
+
+
+
+
 </template>
 
 <script>
@@ -19,9 +32,30 @@ export default {
   name: 'Burger',
   props: {
     burger: Object
-  }
-}
+  },
 
+  data: function () {
+    return {
+      amountOrdered: 0,
+    }
+  },
+  methods: {
+    increaseOrder: function (){
+      this.amountOrdered +=1;
+    },
+    decreaseOrder: function (){
+      this.amountOrdered -=1;
+    },
+    addBurger: function () {
+  this.amountOrdered += 1;
+  this.$emit('orderedBurger', { name:   this.burger.name,
+                                amount: this.amountOrdered
+                              }
+  );
+},
+
+  },
+}
 </script>
 
 
@@ -30,21 +64,27 @@ export default {
 <style scoped>
 
 .theburgers {
-    background-color: black;
-    color: white;
-    border-radius: 10px;
-    padding: 20px;
-    font-size: 150%;
+  background-color: black;
+  color: white;
+  border-radius: 10px;
+  padding: 20px;
+  font-size: 150%;
 }
 
 .wrapper {
-     display: grid;
-     grid-gap: 50px;
-     grid-template-columns: 350px;
+  display: grid;
+  grid-gap: 50px;
+  grid-template-columns: 350px;
 
-     color: #444;
+  color: #444;
 
- }
+}
+
+#ammountButton{
+  width: 50px;
+  height: 50px;
+}
+
 
 
 </style>

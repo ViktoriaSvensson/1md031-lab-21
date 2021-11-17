@@ -23,18 +23,20 @@
 
         <Burger v-for="burger in burgers"
         v-bind:burger="burger"
-        v-bind:key="burger.name"/>
+        v-bind:key="burger.name"
+        v-on:orderedBurger="addToOrder($event)"/>
       </div>
-      <div id="map" v-on:click="addOrder">
+
+      <!-- <div id="map" v-on:click="addOrder">
         click here
-      </div>
+      </div>-->
 
     </section>
 
 
     <section class= "personalinfo" style= "clear:left;">
       <hr> <!--gör en horisontell linje-->
-      <h2>Customesrs information</h2>
+      <h2>Customers information</h2>
       This is where you provide neccessary information
       <h4>Delivery informaiton:</h4>
 
@@ -42,24 +44,24 @@
         Full name
       </label>
       <br>
-      <input type="text" id="firstlastname" name="fn" required="required" placeholder="First- and Last name">
+      <input type="text" id="firstlastname" v-model="fn" required="required" placeholder="First- and Last name">
     </p>
 
     <p><label for="email">
       E-mail
     </label>
     <br>
-    <input type="email" id="email" name="em" required="required" placeholder="E-mail address">
+    <input type="email" id="email" v-model="em" required="required" placeholder="E-mail address">
   </p>
 
   <p><label for="street">Street</label><br>
-    <input type="text" id="street" name="fn" required="required" placeholder="Street name"></p>
+    <input type="text" id="street" v-model="st" required="required" placeholder="Street name"></p>
 
     <p><label for="house">House</label><br>
-      <input type="number" id="street" name="fn" required="required" placeholder="House number"></p>
+      <input type="number" id="street" v-model="ho" required="required" placeholder="House number"></p>
 
       <p><label for="recipient"> Payment options</label><br>
-        <select id="recipient" name="rcp">
+        <select id="recipient" v-model="rcp">
           <option selected="selected">DebitCard</option>
           <option>CreditCard</option>
           <option>Swish</option>
@@ -67,13 +69,14 @@
 
 
         <p>Gender<br>
-          <input checked="checked" type="radio" id="Gender" name="fn">
+
+          <input checked="checked" type="radio" id="Gender" v-model="fe">
           <label for="Gender">Female</label><br>
 
-          <input type="radio" id="Gender" name="fn">
+          <input type="radio" id="Gender" v-model="ma">
           <label for="Gender">Male </label><br>
 
-          <input type="radio" id="Gender" name="fn">
+          <input type="radio" id="Gender" v-model="dnw">
           <label for="Gender">Do not wish to provide </label></p>
 
 
@@ -149,10 +152,24 @@
           socket.emit("addOrder", { orderId: this.getOrderNumber(),
             details: { x: event.clientX - 10 - offset.x,
               y: event.clientY - 10 - offset.y },
-              orderItems: ["Beans", "Curry"]
-            }
+              orderItems: ["Beans", "Curry"],
+            },
+            console.log([this.fn, this.em, this.st, this.ho, this.rcp, this.fe, this.ma, this.dnw]),
+
           );
-        }
+
+
+
+
+        },
+        addToOrder: function (event) {
+          this.orderedBurgers[event.name] = event.amount;
+          console.log(this.orderedBurgers);
+        },
+        addToConsole: function(){
+          console.log([this.fn, this.em, this.st, this.ho, this.rcp, this.fe, this.ma, this.dnw]);
+          console.log(this.orderedBurgers);
+        },
       },
 
 
@@ -164,8 +181,10 @@
     #map {
       width: 300px;
       height: 300px;
-      background-color: red;
+      background-color: orange;
     }
+
+
 
     @import 'https://fonts.googleapis.com/css?family=Pacifico|Dosis';
     body{
@@ -174,7 +193,7 @@
 
     .burgermenu{
       /*color: #ff5500;*/
-      background-color: black; color: white;
+      background-color: grey ; color: white;
     }
     #allergier{
       /*text-transform: uppercase;*/
@@ -205,7 +224,7 @@
     }
 
     .burgers{
-      background-color: black;
+      background-color: grey;
     }
 
     .wrapper {
