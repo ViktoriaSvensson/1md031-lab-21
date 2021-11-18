@@ -7,9 +7,6 @@
   </header>
 
 
-
-
-
   <main>
 
     <section class ="burgermenu">
@@ -24,7 +21,6 @@
         v-bind:key="burger.name"
         v-on:orderedBurger="addToOrder($event)"/>
       </div>
-
     </section>
 
 
@@ -47,258 +43,239 @@
     <br>
     <input type="email" id="email" v-model="em" required="required" placeholder="E-mail address">
   </p>
-<!--
+  <!--
   <p><label for="street">Street</label><br>
-    <input type="text" id="street" v-model="st" required="required" placeholder="Street name"></p>
+  <input type="text" id="street" v-model="st" required="required" placeholder="Street name"></p>
 
-    <p><label for="house">House</label><br>
-      <input type="number" id="street" v-model="ho" required="required" placeholder="House number"></p>
+  <p><label for="house">House</label><br>
+  <input type="number" id="street" v-model="ho" required="required" placeholder="House number"></p>
 -->
-      <p><label for="recipient"> Payment options</label><br>
-        <select id="recipient" v-model="rcp">
-          <option selected="selected">DebitCard</option>
-          <option>CreditCard</option>
-          <option>Swish</option>
-        </select></p>
+<p><label for="recipient"> Payment options</label><br>
+  <select id="recipient" v-model="rcp">
+    <option selected="selected">DebitCard</option>
+    <option>CreditCard</option>
+    <option>Swish</option>
+  </select></p>
 
 
-        <p>Gender<br></p>
-
+  <p>Gender<br></p>
   <div>
     <input type="radio" id="female" v-model="gender" value="female" checked>
     <label for="female">Female</label>
-</div>
-
-<div>
-  <input type="radio" id="male" v-model="gender" value="male">
-  <label for="male">Male</label>
-</div>
-
-<div>
-  <input type="radio" id="noneoftheabove" v-model="gender" value="noneoftheabove">
-  <label for="noneoftheabove">None of the above</label>
-</div>
-
-<div>
-  <input type="radio" id="donotwishtoprovide" v-model="gender" value="donotwishtoprovide">
-  <label for="donotwishtoprovide">Do not wish to provide</label>
-</div>
+<br>
 
 
-
-          <div id="scrollmap">
-               <div id="map" v-on:click="setLocation" >
-                 <p id= "theT" v-bind:style="{left:coord.x + 'px', top: coord.y + 'px'}" >
-                   T
-                 </p>
-               </div>
-             </div>
-
-        </section>
+    <input type="radio" id="male" v-model="gender" value="male">
+    <label for="male">Male</label>
+<br>
 
 
+    <input type="radio" id="noneoftheabove" v-model="gender" value="noneoftheabove">
+    <label for="noneoftheabove">None of the above</label>
+<br>
+
+    <input type="radio" id="donotwishtoprovide" v-model="gender" value="donotwishtoprovide">
+    <label for="donotwishtoprovide">Do not wish to provide</label>
+  </div>
 
 
-        <button v-on:click="submitOrder" type="submit" id="myButton">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbRUPEUTPTXcTAOKr5GN3B-pI9DHw9bh3mrw&usqp=CAU" style="width: 15px;">
-          Place my order!
-        </button>
+  <div id="scrollmap">
+    <div id="map" v-on:click="setLocation" >
+      <p id= "theT" v-bind:style="{left:coord.x + 'px', top: coord.y + 'px'}" >
+        T
+      </p>
+    </div>
+  </div>
+
+</section>
 
 
+<button v-on:click="submitOrder" type="submit" id="myButton">
+  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbRUPEUTPTXcTAOKr5GN3B-pI9DHw9bh3mrw&usqp=CAU" style="width: 15px;">
+  Place my order!
+</button>
+
+</main>
+<hr> <!--gör en horisontell linje-->
 
 
+<footer>
+  End notes
+</footer>
 
-      </main>
-      <hr> <!--gör en horisontell linje-->
-
-
-      <footer>
-        End notes
-      </footer>
-
-    </template>
+</template>
 
 
+<script>
+import Burger from '../components/Burger.vue'
+import io from 'socket.io-client'
+import menu from '../assets/menu.json'
 
-    <script>
-    import Burger from '../components/Burger.vue'
-    import io from 'socket.io-client'
-    import menu from '../assets/menu.json'
+/* function MenuItems(name, kCal, url, contain, gluten, lactose) {
+this.name = name; // The *this* keyword refers to the object itself
+this.kCal=kCal;
+this.url = url;
+this.contain=contain;
+this.gluten= Boolean(gluten);
+this.lactose=Boolean(lactose);
+}
 
+const menit = [
+new MenuItems ("Chicken", 2000, "https://res.cloudinary.com/hemkop/image/upload/c_fill,g_auto:custom_no_override,h_347,q_auto,w_618/v1/recipeImages/9854146805790", "chicken", false, false),
+new MenuItems ("Vegetarian", 1500, "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRT4Ow2wkRDTW6mb6LDwaVPJX4SmveSV9Q03g&usqp=CAU", "vegetarian", true, true),
+new MenuItems ("Bacon and beef", 2000, "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9vAYgYztYeZZKgeQqe-of_i7Tc03H0eOELg&usqp=CAU", "beef", true, true)];
 
+console.log(menit)
 
+*/
 
+const socket = io();
 
-    /* function MenuItems(name, kCal, url, contain, gluten, lactose) {
-    this.name = name; // The *this* keyword refers to the object itself
-    this.kCal=kCal;
-    this.url = url;
-    this.contain=contain;
-    this.gluten= Boolean(gluten);
-    this.lactose=Boolean(lactose);
-  }
+export default {
+  name: 'Home',
+  components: {
+    Burger,
+  },
 
-  const menit = [
-  new MenuItems ("Chicken", 2000, "https://res.cloudinary.com/hemkop/image/upload/c_fill,g_auto:custom_no_override,h_347,q_auto,w_618/v1/recipeImages/9854146805790", "chicken", false, false),
-  new MenuItems ("Vegetarian", 1500, "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRT4Ow2wkRDTW6mb6LDwaVPJX4SmveSV9Q03g&usqp=CAU", "vegetarian", true, true),
-  new MenuItems ("Bacon and beef", 2000, "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9vAYgYztYeZZKgeQqe-of_i7Tc03H0eOELg&usqp=CAU", "beef", true, true)];
+  data: function () {
+    return {
+      burgers: menu,
+      coord: {x:0, y:0},
+      orderedBurger:"",
+      gender: ""
+    }
+  },
 
-  console.log(menit)
-
-  */
-
-
-  const socket = io();
-
-  export default {
-    name: 'Home',
-    components: {
-      Burger,
-
+  methods: {
+    getOrderNumber: function () {
+      return Math.floor(Math.random()*100000);
     },
-    data: function () {
-      return {
-        burgers: menu,
-        coord: {x:0, y:0},
-        orderedBurgers:[]
-      }
-    },
-    methods: {
-      getOrderNumber: function () {
-        return Math.floor(Math.random()*100000);
+    addOrder: function (event) {
+      var offset = {x: event.currentTarget.getBoundingClientRect().left,
+        y: event.currentTarget.getBoundingClientRect().top};
+        socket.emit("addOrder", { orderId: this.getOrderNumber(),
+          details: { x: event.clientX - 10 - offset.x,
+            y: event.clientY - 10 - offset.y },
+            /*orderItems: ["Beans", "Curry"],*/
+          },
+        );
       },
-      addOrder: function (event) {
-        var offset = {x: event.currentTarget.getBoundingClientRect().left,
-          y: event.currentTarget.getBoundingClientRect().top};
-          socket.emit("addOrder", { orderId: this.getOrderNumber(),
-            details: { x: event.clientX - 10 - offset.x,
-              y: event.clientY - 10 - offset.y },
-              orderItems: ["Beans", "Curry"],
-            },
 
-          );
-        },
+      submitOrder: function(){
+        socket.emit("addOrder", { orderId: this.getOrderNumber(),
+          details: { x:this.coord.x,
+            y: this.coord.y },
+          orderItems: {burger:this.orderedBurger},
+          },
+        );
+        console.log([this.fn, this.em, this.rcp, this.gender, this.orderedBurger] )
+      },
 
-        submitOrder: function(){
-          socket.emit("addOrder", { orderId: this.getOrderNumber(),
-            details: { x:this.coord.x,
-              y: this.coord.y },
-              orderItems: (this.burger, this.orderedBurgers),
-            },
+      addToOrder: function (event) {
+        this.orderedBurger[event.name] = event.amount;
+        console.log(this.orderedBurger);
+      },
 
-          );
-
-console.log([this.fn, this.em, this.rcp, this.gender])
-
-        },
-
-        addToOrder: function (event) {
-          this.orderedBurgers[event.name] = event.amount;
-          console.log(this.orderedBurgers);
-        },
-
-        setLocation: function(event){
+      setLocation: function(event){
         var offset= event.currentTarget.getBoundingClientRect();
         this.coord.x=event.clientX-offset.left-10;
         this.coord.y=event.clientY-offset.top-10;
-
-        },
-
-
       },
+    },
+  }
+  </script>
 
-    }
-    </script>
+  <style>
 
-    <style>
+  #map {
+    width: 300px;
+    height: 300px;
+    background: url("/img/polacks.jpg");
+    width:1920px;
+    height: 1078px;
+  }
 
-    #map {
-      width: 300px;
-      height: 300px;
-      background: url("/img/polacks.jpg");
-      width:1920px;
-      height: 1078px;
-}
+  @import 'https://fonts.googleapis.com/css?family=Pacifico|Dosis';
+  body{
+    font-family: "Courier New", monospace;
+  }
 
-    @import 'https://fonts.googleapis.com/css?family=Pacifico|Dosis';
-    body{
-      font-family: "Courier New", monospace;
-    }
+  .burgermenu{
+    /*color: #ff5500;*/
+    background-color: grey ; color: white;
+  }
 
-    .burgermenu{
-      /*color: #ff5500;*/
-      background-color: grey ; color: white;
+  #allergier{
+    /*text-transform: uppercase;*/
+    font-weight: bold;
+  }
 
-    }
-    #allergier{
-      /*text-transform: uppercase;*/
-      font-weight: bold;
-    }
+  .rubrik{
+    color: black;
+    background-color: white;
+    width: 1145px;
 
-    .rubrik{
-      color: black;
-      background-color: white;
-      width: 1145px;
+    margin: 10px;
+    border: 5px outset #DEB887;
+    padding: 10px;
+    overflow: hidden;
+  }
 
-      margin: 10px;
-      border: 5px outset #DEB887;
-      padding: 10px;
-      overflow: hidden;
-    }
+  #rubrikbild{
+    opacity: 0.6;
+    width: 100%;
+    height: 300px;
+  }
 
-    #rubrikbild{
-      opacity: 0.6;
-      width: 100%;
-      height: 300px;
-    }
+  #rubriktext {
+    position: absolute;
+    margin-top: -200px;
+  }
 
-    #rubriktext {
-      position: absolute;
-      margin-top: -200px;
+  .burgers{
+    background-color: grey;
+  }
 
-    }
+  .wrapper {
+    display: grid;
+    grid-gap: 50px;
+    grid-template-columns: 350px 350px 350px; /*ställer in stolek på boxaran*/
+    color: grey;
+  }
 
-    .burgers{
-      background-color: grey;
+  .personalinfo{
+    margin: 10px;
+    border: 5px outset #DEB887;
+    padding: 10px;
 
-    }
+  }
+  .burgermenu{
+    margin: 10px;
+    border: 5px outset  #DEB887;
+    padding: 10px;
+  }
 
-    .wrapper {
-      display: grid;
-      grid-gap: 50px;
-      grid-template-columns: 350px 350px 350px; /*ställer in stolek på boxaran*/
-          color: grey;
+  button:hover {
+    background-color: #DEB887;
+  }
 
-      /*grid-column-gap: 40px;*/
-    }
+  #scrollmap{
+    overflow:scroll;
+    width: 1000px;
+    height: 500px;
+    border: 5px outset #DEB887;
+    margin-left: 20px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    position: relative;
+  }
+  #theT {
+    background-color: grey;
+    position: absolute;
 
-    .personalinfo{
-      /*margin: 500px;*/
-      /*margin: 100px 500px 50px 500px;*/
-      margin: 10px;
-      border: 5px outset #DEB887;
-      padding: 10px;
+    width:20px;
+    height:20px;
+    border-radius: 10px;
+  }
 
-    }
-    .burgermenu{
-      margin: 10px;
-      border: 5px outset  #DEB887;
-      padding: 10px;
-    }
-
-    button:hover {
-      background-color: #DEB887;
-    }
-
-    #scrollmap{
-      overflow:scroll;
-    }
-    #theT {
-  background-color: grey;
-
-  width:20px;
-  height:20px;
-  border-radius: 10px;
-}
-
-    </style>
+  </style>

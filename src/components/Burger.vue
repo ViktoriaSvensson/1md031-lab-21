@@ -50,14 +50,14 @@ export default {
       }
     },
     addBurger: function () {
-  this.amountOrdered += 1;
-  this.$emit('orderedBurger', { name:   this.burger.name,
-                                amount: this.amountOrdered
-                              }
-  );
-},
-
+      this.amountOrdered += 1;
+      this.$emit('orderedBurger', { name:   this.burger.name,
+                                  amount: this.amountOrdered
+      }
+    );
   },
+
+},
 }
 </script>
 
@@ -70,15 +70,16 @@ export default {
   background-color: black;
   color: white;
   border-radius: 10px;
-  padding: 20px;
+  padding: 15px;
+  padding-left: 40px;
   font-size: 150%;
+  margin-left: 10px;
 }
 
 .wrapper {
   display: grid;
   grid-gap: 50px;
   grid-template-columns: 350px;
-
   color: #444;
 
 }
@@ -86,6 +87,7 @@ export default {
 #amountButton{
   width: 50px;
   height: 50px;
+  margin-left: 15px;
 }
 
 
