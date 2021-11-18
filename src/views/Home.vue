@@ -141,7 +141,7 @@ export default {
     return {
       burgers: menu,
       coord: {x:0, y:0},
-      orderedBurger:"",
+      orderedBurger:{},
       gender: ""
     }
   },
@@ -165,7 +165,7 @@ export default {
         socket.emit("addOrder", { orderId: this.getOrderNumber(),
           details: { x:this.coord.x,
             y: this.coord.y },
-          orderItems: {burger:this.orderedBurger},
+          orderItems: {burger: this.orderedBurger,}
           },
         );
         console.log([this.fn, this.em, this.rcp, this.gender, this.orderedBurger] )
