@@ -141,8 +141,14 @@ export default {
     return {
       burgers: menu,
       coord: {x:0, y:0},
-      orderedBurger:{},
-      gender: ""
+      orderedBurger:{Chicken:0, Vegetarian:0, Beef:0},
+      gender: "",
+      orderInfo: [],
+      name: "",
+      email: "",
+      payment:"",
+
+
     }
   },
 
@@ -162,18 +168,22 @@ export default {
       },
 
       submitOrder: function(){
+        console.log()
         socket.emit("addOrder", { orderId: this.getOrderNumber(),
           details: { x:this.coord.x,
             y: this.coord.y },
-          orderItems: {burger: this.orderedBurger,}
+          orderItems:this.orderedBurger,
+
+          orderInfo: {name: this.fn, email: this.em, payment: this.rcp, gender: this.gender}
           },
         );
-        console.log([this.fn, this.em, this.rcp, this.gender, this.orderedBurger] )
+        console.log([this.fn, this.em, this.rcp, this.gender, this.orderedBurger, this.orderInfo] )
       },
 
       addToOrder: function (event) {
+        console.log("heej")
         this.orderedBurger[event.name] = event.amount;
-        console.log(this.orderedBurger);
+
       },
 
       setLocation: function(event){

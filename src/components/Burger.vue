@@ -42,20 +42,22 @@ export default {
   methods: {
     increaseOrder: function (){
       this.amountOrdered +=1;
+      this.$emit('orderedBurger', { name:   this.burger.name,
+                                  amount: this.amountOrdered
+      }
+    );
     },
     decreaseOrder: function (){
 
       if (this.amountOrdered >0){
         this.amountOrdered -=1;
       }
-    },
-    addBurger: function () {
-      this.amountOrdered += 1;
       this.$emit('orderedBurger', { name:   this.burger.name,
                                   amount: this.amountOrdered
       }
     );
-  },
+    },
+
 
 },
 }
