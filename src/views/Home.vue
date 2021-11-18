@@ -3,7 +3,7 @@
 
   <header class= "rubrik">
     <img src="https://www.activecatering.se/wp-content/uploads/sites/131/2014/10/header-restaurang.png" id="rubrikbild">
-    <h1 id= "rubriktext"> Välkommen till BurgerOnline </h1>
+    <h1 id= "rubriktext"> Welcome to burger online </h1>
   </header>
 
 
@@ -11,25 +11,19 @@
 
 
   <main>
+
     <section class ="burgermenu">
       <h2>Choose your burger</h2>
       <br><br>
-      This is where you choose your burgers
-
-      <!--<nav> Menu items </nav>-->
+      Here is where you choose your burgers
 
 
       <div class="wrapper">
-
         <Burger v-for="burger in burgers"
         v-bind:burger="burger"
         v-bind:key="burger.name"
         v-on:orderedBurger="addToOrder($event)"/>
       </div>
-
-      <!-- <div id="map" v-on:click="addOrder">
-        click here
-      </div>-->
 
     </section>
 
@@ -37,7 +31,7 @@
     <section class= "personalinfo" style= "clear:left;">
       <hr> <!--gör en horisontell linje-->
       <h2>Customers information</h2>
-      This is where you provide neccessary information
+      Here is where you provide neccessary information
       <h4>Delivery informaiton:</h4>
 
       <p><label for="firstlastname" >
@@ -53,13 +47,13 @@
     <br>
     <input type="email" id="email" v-model="em" required="required" placeholder="E-mail address">
   </p>
-
+<!--
   <p><label for="street">Street</label><br>
     <input type="text" id="street" v-model="st" required="required" placeholder="Street name"></p>
 
     <p><label for="house">House</label><br>
       <input type="number" id="street" v-model="ho" required="required" placeholder="House number"></p>
-
+-->
       <p><label for="recipient"> Payment options</label><br>
         <select id="recipient" v-model="rcp">
           <option selected="selected">DebitCard</option>
@@ -68,24 +62,49 @@
         </select></p>
 
 
-        <p>Gender<br>
+        <p>Gender<br></p>
 
-          <input checked="checked" type="radio" id="Gender" v-model="fe">
-          <label for="Gender">Female</label><br>
+  <div>
+    <input type="radio" id="female" v-model="gender" value="female" checked>
+    <label for="female">Female</label>
+</div>
 
-          <input type="radio" id="Gender" v-model="ma">
-          <label for="Gender">Male </label><br>
+<div>
+  <input type="radio" id="male" v-model="gender" value="male">
+  <label for="male">Male</label>
+</div>
 
-          <input type="radio" id="Gender" v-model="dnw">
-          <label for="Gender">Do not wish to provide </label></p>
+<div>
+  <input type="radio" id="noneoftheabove" v-model="gender" value="noneoftheabove">
+  <label for="noneoftheabove">None of the above</label>
+</div>
 
+<div>
+  <input type="radio" id="donotwishtoprovide" v-model="gender" value="donotwishtoprovide">
+  <label for="donotwishtoprovide">Do not wish to provide</label>
+</div>
+
+
+
+          <div id="scrollmap">
+               <div id="map" v-on:click="setLocation" >
+                 <p id= "theT" v-bind:style="{left:coord.x + 'px', top: coord.y + 'px'}" >
+                   T
+                 </p>
+               </div>
+             </div>
 
         </section>
 
-        <button v-on:click="addOrder" type="submit" id="myButton">
+
+
+
+        <button v-on:click="submitOrder" type="submit" id="myButton">
           <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbRUPEUTPTXcTAOKr5GN3B-pI9DHw9bh3mrw&usqp=CAU" style="width: 15px;">
           Place my order!
         </button>
+
+
 
 
 
@@ -139,7 +158,9 @@
     },
     data: function () {
       return {
-        burgers: menu
+        burgers: menu,
+        coord: {x:0, y:0},
+        orderedBurgers:[]
       }
     },
     methods: {
@@ -154,37 +175,50 @@
               y: event.clientY - 10 - offset.y },
               orderItems: ["Beans", "Curry"],
             },
-            console.log([this.fn, this.em, this.st, this.ho, this.rcp, this.fe, this.ma, this.dnw]),
+
+          );
+        },
+
+        submitOrder: function(){
+          socket.emit("addOrder", { orderId: this.getOrderNumber(),
+            details: { x:this.coord.x,
+              y: this.coord.y },
+              orderItems: (this.burger, this.orderedBurgers),
+            },
 
           );
 
-
-
+console.log([this.fn, this.em, this.rcp, this.gender])
 
         },
+
         addToOrder: function (event) {
           this.orderedBurgers[event.name] = event.amount;
           console.log(this.orderedBurgers);
         },
-        addToConsole: function(){
-          console.log([this.fn, this.em, this.st, this.ho, this.rcp, this.fe, this.ma, this.dnw]);
-          console.log(this.orderedBurgers);
+
+        setLocation: function(event){
+        var offset= event.currentTarget.getBoundingClientRect();
+        this.coord.x=event.clientX-offset.left-10;
+        this.coord.y=event.clientY-offset.top-10;
+
         },
+
+
       },
-
-
 
     }
     </script>
 
     <style>
+
     #map {
       width: 300px;
       height: 300px;
-      background-color: orange;
-    }
-
-
+      background: url("/img/polacks.jpg");
+      width:1920px;
+      height: 1078px;
+}
 
     @import 'https://fonts.googleapis.com/css?family=Pacifico|Dosis';
     body{
@@ -194,6 +228,7 @@
     .burgermenu{
       /*color: #ff5500;*/
       background-color: grey ; color: white;
+
     }
     #allergier{
       /*text-transform: uppercase;*/
@@ -218,20 +253,22 @@
     }
 
     #rubriktext {
-      text-align: center;
       position: absolute;
       margin-top: -200px;
+
     }
 
     .burgers{
       background-color: grey;
+
     }
 
     .wrapper {
       display: grid;
       grid-gap: 50px;
       grid-template-columns: 350px 350px 350px; /*ställer in stolek på boxaran*/
-      color: grey;
+          color: grey;
+
       /*grid-column-gap: 40px;*/
     }
 
@@ -252,5 +289,16 @@
     button:hover {
       background-color: #DEB887;
     }
+
+    #scrollmap{
+      overflow:scroll;
+    }
+    #theT {
+  background-color: grey;
+
+  width:20px;
+  height:20px;
+  border-radius: 10px;
+}
 
     </style>

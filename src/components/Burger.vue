@@ -12,10 +12,10 @@
       <li>Contains <span id= "allergier">{{ burger.gluten }}</span></li>
       <li>Amount ordered {{ amountOrdered }}</li>
     </ul>
-    <button v-on:click="increaseOrder" type="+1" id="ammountButton">
+    <button v-on:click="increaseOrder" type="+1" id="amountButton">
       +
     </button>
-    <button v-on:click="decreaseOrder" type="-1" id="ammountButton">
+    <button v-on:click="decreaseOrder" type="-1" id="amountButton">
       -
     </button>
   </div>
@@ -44,7 +44,10 @@ export default {
       this.amountOrdered +=1;
     },
     decreaseOrder: function (){
-      this.amountOrdered -=1;
+
+      if (this.amountOrdered >0){
+        this.amountOrdered -=1;
+      }
     },
     addBurger: function () {
   this.amountOrdered += 1;
@@ -80,7 +83,7 @@ export default {
 
 }
 
-#ammountButton{
+#amountButton{
   width: 50px;
   height: 50px;
 }
