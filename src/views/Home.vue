@@ -60,24 +60,24 @@
 
   <p>Gender<br></p>
   <div>
-    <input type="radio" id="female" v-model="gender" value="female" checked>
+    <input type="radio" id="female" v-model="gender" value="Female" checked>
     <label for="female">Female</label>
 <br>
 
 
-    <input type="radio" id="male" v-model="gender" value="male">
+    <input type="radio" id="male" v-model="gender" value="Male">
     <label for="male">Male</label>
 <br>
 
 
-    <input type="radio" id="noneoftheabove" v-model="gender" value="noneoftheabove">
+    <input type="radio" id="noneoftheabove" v-model="gender" value="None of the above">
     <label for="noneoftheabove">None of the above</label>
 <br>
 
-    <input type="radio" id="donotwishtoprovide" v-model="gender" value="donotwishtoprovide">
+    <input type="radio" id="donotwishtoprovide" v-model="gender" value="Do not wish to provide">
     <label for="donotwishtoprovide">Do not wish to provide</label>
-  </div>
-
+  </div><br>
+Klick on the map where you want your order to be delivered
 
   <div id="scrollmap">
     <div id="map" v-on:click="setLocation" >
@@ -100,7 +100,7 @@
 
 
 <footer>
-  End notes
+End
 </footer>
 
 </template>
@@ -212,7 +212,7 @@ export default {
 
   .burgermenu{
     /*color: #ff5500;*/
-    background-color: grey ; color: white;
+    background-color: black ; color: white;
   }
 
   #allergier{
@@ -238,6 +238,7 @@ export default {
   }
 
   #rubriktext {
+    margin-left: 300px;
     position: absolute;
     margin-top: -200px;
   }

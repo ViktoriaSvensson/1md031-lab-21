@@ -9,3 +9,40 @@ Before you submit the final version of your labs, make sure that your project fu
 ## 01 Git
 
 - [x] Fork and clone the 1md031-lab-21 repository
+
+## 02 HTML
+
+Your index.html file contains:
+- [x] A headline
+- [x] A section to select burgers that contains at least three items. Each item has:
+    - [x] A name
+    - [x] An image
+    - [x] Information about allergies
+- [x] A section to collect customer information:
+    - [x] First- and Last Name (in one field)
+    - [x] E-Mail Address
+    - [x] Street
+    - [x] House Number (only allowing numbers in this field)
+    - [x] Gender (male, female, do not wish to provide as radio buttons)
+- [x] A button to place the order
+- [x] Ensure the website loads when opening http://localhost:8080/
+
+## 04 JavaScript and Vue
+
+- [x] You have a menu.json file which contains at least three different burgers with respective attributes
+
+Your Home.vue file:
+- [x] ... contains a MenuItem constructor (that is not used)
+- [x] ... loads the information from the menu.json object and inserts the information to the burger selection section
+- [x] ... allows the customer to click in the interactive map to select delivery location
+- [x] ... has an order button that sends the information from the text boxes, the gender, all items on the order, and the delivery location to the server (to be realyed to the dispatcher)
+
+Your Burger.vue component:
+- [x] ... allows adding and removing burgers from the order
+- [x] ... only displays allergy information if relevant (either only if it contains gluten or lactose, or only if it's gluten or lactose free)
+
+Your Dispatcher.vue file:
+- [x] ... shows for every order :
+    - [x] a location on the map
+    - [x] the order information
+    - [x] the customer information

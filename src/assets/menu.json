@@ -6,7 +6,7 @@
     "url": "https://res.cloudinary.com/hemkop/image/upload/c_fill,g_auto:custom_no_override,h_347,q_auto,w_618/v1/recipeImages/9854146805790",
     "contain": "chicken",
     "gluten": false,
-    "lactose": false
+    "lactose": true
   },
   {
     "name": "Vegetarian",
@@ -14,7 +14,7 @@
     "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRT4Ow2wkRDTW6mb6LDwaVPJX4SmveSV9Q03g&usqp=CAU",
     "contain": "vegetarian",
     "gluten": true,
-    "lactose": true
+    "lactose": false
   },
   {
     "name": "Bacon and beef",

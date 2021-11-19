@@ -6,11 +6,11 @@
     <h4>{{ burger.name }}</h4>
     <img v-bind:src= "burger.url"  alt="Span" title="Another in-line element" style="width: 200px; height: 120px;" >
     <br><ul>
-      <li>{{ burger.kCal }}</li>
+      <li>{{ burger.kCal }}kCal</li>
       <li>{{ burger.contain }}</li>
-      <li> Contains <span id= "allergier" > {{ burger.lactose }}  </span></li>
-      <li>Contains <span id= "allergier">{{ burger.gluten }}</span></li>
-      <li>Amount ordered {{ amountOrdered }}</li>
+      <li v-if= "burger.lactose" id="lactose"> Contains <span> lactose </span></li>
+      <li v-if= "burger.gluten" id="gluten" >Contains gluten</li>
+      <br>Amount ordered {{ amountOrdered }}
     </ul>
     <button v-on:click="increaseOrder" type="+1" id="amountButton">
       +
