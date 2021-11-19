@@ -141,7 +141,7 @@ export default {
     return {
       burgers: menu,
       coord: {x:0, y:0},
-      orderedBurger:{Chicken:0, Vegetarian:0, Beef:0},
+      orderedBurger:{Chicken:0, Vegetarian:0, BaconAndBeef:0},
       gender: "",
       orderInfo: [],
       name: "",

@@ -3,13 +3,14 @@
     <div id="orderList">
       <div v-for="(order, key) in orders" v-bind:key="'order'+key">
 
-
-        #{{ key }}:
-        Vegetarian:{{ order.orderItems.Vegetarian}}
-        Chicken:{{ order.orderItems.Chicken}}
-        Bacon and Beef:{{ order.orderItems.BaconAndBeef}}<br>
-        {{order.orderInfo.name}}
-        {{order.orderInfo.em}}
+<br>
+        #{{ key }}:<br> Burgers<br>
+        Chicken: amount:{{ order.orderItems.Chicken}}st<br>
+        Vegetarian: amount:{{ order.orderItems.Vegetarian}}<br>
+        Bacon and Beef: amount:{{ order.orderItems.BaconAndBeef}}<br><br>
+        Info:<br>
+        {{order.orderInfo.name}},
+        {{order.orderInfo.email}},
         {{order.orderInfo.gender}}
 
 
